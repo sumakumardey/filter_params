@@ -1,6 +1,6 @@
 # FilterParams
 
-TODO: this gem is for cleanning the controller params for protecting from mass_assignment
+TODO: This gem is for cleanning the controller params and protecting from mass assignment
 
 ## Installation
 
