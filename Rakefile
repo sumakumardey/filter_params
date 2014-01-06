@@ -1,8 +1,13 @@
-require "bundler/gem_tasks"
+require 'rake'
+require 'rake/testtask'
+require 'rdoc/task'
+require 'spec/rake/spectask'
 
-require "rspec/core/rake_task"
-
-RSpec::Core::RakeTask.new
-
+desc 'Default: run specs.'
 task :default => :spec
-task :test => :spec
+
+desc 'Run the specs'
+Spec::Rake::SpecTask.new(:spec) do |t|
+  t.spec_opts = ['--colour --format progress --loadby mtime --reverse']
+  t.spec_files = FileList['spec/**/*_spec.rb']
+end
