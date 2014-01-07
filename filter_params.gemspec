@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake","0.8.7"
   spec.add_development_dependency "rspec","1.3.1"
-  spec.add_development_dependency "rails", "2.3.18"
+  spec.add_development_dependency "actionpack", "2.3.18"
+  spec.add_development_dependency "activesupport", "2.3.18"
   spec.add_development_dependency "rr", '1.0.4'
   spec.add_development_dependency 'rspec-rails',"1.3.3"
   spec.required_rubygems_version = ">= 1.3.4"

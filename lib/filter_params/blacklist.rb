@@ -1,4 +1,5 @@
+require 'filter_params/sanitizer'
 module FilterParams
-	module Blacklist
+	class Blacklist < FilterParams::Sanitizer		
 	end
 end
