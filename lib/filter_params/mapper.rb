@@ -2,7 +2,7 @@ module FilterParams
   class Mapper
 
  		ValidType = [:blacklist,:whitelist]
-  	attr_accessor :proc, :filter_action, :filter_action_type, :resource_name, :type
+  	attr_accessor :proc, :filter_action, :filter_action_type, :resource_name, :type, :fields
   	
   	def initialize
   		@filter_action = []
@@ -17,7 +17,8 @@ module FilterParams
   		@resource_name = resource_name
   		options = args.extract_options!
   		@type = options[:type] ? options[:type] : :blacklist
-  		# @method_name = generate_method_name
+  		@fields = options[:fields]
+      # @method_name = generate_method_name
   		if(options && options[:only])
   			@filter_action = options[:only]
   			@filter_action_type = :only
@@ -28,9 +29,9 @@ module FilterParams
   			@filter_action_type = :all
   		end
   		if @type == :blacklist
-  			FilterParams::Blacklist.generate_method_and_add_hook(self)
+  			FilterParams::Blacklist.new.generate_method_and_add_hook(self)
   		elsif @type == :whitelist
-  			FilterParams::Whitelist.generate_method_and_add_hook(self)
+  			FilterParams::Whitelist.new.generate_method_and_add_hook(self)
   		else
   			raise "Invalid type in resource it should be either :blacklist or :whitelist"
   		end
